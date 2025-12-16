@@ -2,6 +2,9 @@ package br.com.michael.projeto.entity;
 
 import java.util.Objects;
 
+import org.springframework.beans.BeanUtils;
+
+import br.com.michael.projeto.dto.UserDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
-public class UsuarioEntity {
+public class UserEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +25,17 @@ public class UsuarioEntity {
 	
 	@Column(nullable = false, unique = true)
 	private	String login;
+	
+	@Column(nullable = false)
+	private String password;
+	
+	@Column(nullable = false)
+	private String email;
+
+	public UserEntity(UserDTO usuario) {
+		BeanUtils.copyProperties(usuario, this);
+	}
+	
 	
 	public Long getId() {
 		return id;	
@@ -76,15 +90,7 @@ public class UsuarioEntity {
 			return false;
 		if(getClass() != obj.getClass())
 			return false;
-		UsuarioEntity other = (UsuarioEntity) obj;
+		UserEntity other = (UserEntity) obj;
 		return Objects.equals(id, other.id);
-	}
-	
-
-	@Column(nullable = false)
-	private String password;
-	
-	@Column(nullable = false)
-	private String email;
-	
+	}	
 }
