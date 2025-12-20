@@ -8,18 +8,28 @@ public class UserDTO {
 	
 	private Long id;
 			
-	private String nome;
+	private String name;
 	
-	private String senha;
+	private String login;
+	
+	private String password;
 	
 	private String email;
 	
-	public UserDTO(UserEntity	usuario) {
-		BeanUtils.copyProperties(usuario, this);
+	public UserDTO(UserEntity	user) {
+		BeanUtils.copyProperties(user, this);
 	}
 	
 	public UserDTO() {
 		
+	}
+	
+	public String getLogin() {
+		return login;
+	}
+	
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public Long getId() {
@@ -30,20 +40,20 @@ public class UserDTO {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassoword(String password) {
+		this.password = password;
 	}
 
 	public String getEmail() {

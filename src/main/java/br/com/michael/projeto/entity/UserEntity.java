@@ -32,10 +32,13 @@ public class UserEntity {
 	@Column(nullable = false)
 	private String email;
 
-	public UserEntity(UserDTO usuario) {
-		BeanUtils.copyProperties(usuario, this);
+	public UserEntity(UserDTO user) {
+		BeanUtils.copyProperties(user, this);
 	}
 	
+	public UserEntity() {
+		
+	}
 	
 	public Long getId() {
 		return id;	
